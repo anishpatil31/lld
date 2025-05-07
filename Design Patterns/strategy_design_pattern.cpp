@@ -23,29 +23,22 @@ class Vehicle{
   public:
     DriveInterface* driveObj;
     
-    virtual void drive() = 0;
+    void drive(){
+        driveObj->drive();
+    }
     
     Vehicle(DriveInterface* obj): driveObj(obj){}
 };
 class SportsVehicle:public Vehicle{
     public:
-        void drive(){
-            driveObj->drive();
-        }
         SportsVehicle() : Vehicle(new SpecialDrive()) {}
 };
 class PassengerVehicle:public Vehicle{
     public:
-        void drive(){
-            driveObj->drive();
-        }
         PassengerVehicle(): Vehicle(new NormalDrive()) {}
 };
 class HimalayanVehicle:public Vehicle{
     public:
-        void drive(){
-            driveObj->drive();
-        }
         HimalayanVehicle(): Vehicle(new SpecialDrive()){}
 };
 int32_t main()
